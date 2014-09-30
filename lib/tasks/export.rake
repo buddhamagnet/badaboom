@@ -9,6 +9,7 @@ namespace :bada do
     end
     
     if user
+      Pusher.trigger('bada_channel', 'bada_event', message: 'EXPORT IN PROGRESS')
       puts "Processing feed at endpoint: #{user.feed}"
       feed = Feedjira::Feed.fetch_and_parse(user.feed)
       puts "Complete parsing"

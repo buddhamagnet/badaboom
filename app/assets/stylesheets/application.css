@@ -15,3 +15,8 @@
  *= require foundation_and_overrides
 
  */
+
+ h1#status {
+ 	color: white;
+ 	padding: 5px;
+ }

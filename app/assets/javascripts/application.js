@@ -25,6 +25,11 @@ channel.bind('boo_event', function(data) {
   $element.text(data['count']);
 });
 
+var channel = pusher.subscribe('bada_channel');
+channel.bind('bada_event', function(data) {
+  $("h1#status").text(data['message']);
+});
+
 Pusher.log = function(msg) {
   if (console && console.log) {
     console.log(msg);
