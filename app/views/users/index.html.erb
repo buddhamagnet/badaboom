@@ -1,5 +1,20 @@
-<ul>
-  <% @users.each do |user| %>
-    <li><strong><%= link_to user.username, user %></strong></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th width="200">username</th>
+      <th width="200">audioboo(m) URL</th>
+      <th width="200">boos</th>
+      <th width="200">feed page</th>
+    </tr>
+  </thead>
+  <tbody>
+  	 <% @users.each do |user| %>
+  	 <tr>
+  	 	<td><%= link_to user.username, user %></td>
+  	 	<td><%= link_to user.feed, user.feed %></td>
+  	 	<td><%= user.feed_items.count %></td>
+  	 	<td><%= link_to 'feed', user_feed_items_path(user) unless user.feed_items.empty? %></td>
+  	 </tr>
+  	 <% end %>
+  </tbody>
+ </table>
