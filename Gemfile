@@ -13,4 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'spring', group: :development
 
+gem 'carrierwave'
 gem 'feedjira'
+gem 'fog'
