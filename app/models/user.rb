@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :feed_items
 
   def feed
     "https://audioboom.com/users/#{uid}/boos.rss"

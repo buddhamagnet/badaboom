@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930121436) do
+ActiveRecord::Schema.define(version: 20140930121934) do
+
+  create_table "feed_items", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "link"
+    t.text     "description"
+    t.date     "published"
+    t.string   "file"
+    t.string   "geo"
+    t.text     "keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feed_items", ["user_id"], name: "index_feed_items_on_user_id"
 
   create_table "users", force: true do |t|
     t.integer  "uid"
