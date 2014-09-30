@@ -2,6 +2,12 @@ namespace :bada do
   desc 'Export data and files from Audioboo(m)'
   task :boom, [:uid] => [:environment] do |t, args|
     user = User.where("uid = :uid", uid: args[:uid]).first
+    
+    if user.feed_items.any?
+      puts 'Deleting stale feed entries'
+      user.feed_items.delete_all
+    end
+    
     if user
       puts "Processing feed at endpoint: #{user.feed}"
       feed = Feedjira::Feed.fetch_and_parse(user.feed)
