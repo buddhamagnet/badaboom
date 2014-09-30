@@ -1,5 +1,5 @@
 <ul>
   <% @users.each do |user| %>
-    <li><%= user.username %> feed: <%= link_to user.feed_items %></li>
+    <li><strong><%= link_to user.username, user %></strong></li>
   <% end %>
 </ul>

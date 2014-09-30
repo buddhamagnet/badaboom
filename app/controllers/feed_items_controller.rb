@@ -1,4 +1,4 @@
-class FeedItemController < ApplicationController
+class FeedItemsController < ApplicationController
   def index
     user = User.find(params[:user_id])
     @feed_items = user.feed_items

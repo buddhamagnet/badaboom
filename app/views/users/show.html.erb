@@ -1,2 +1,2 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h3><%= @user.username %></h3>
+<%= link_to 'feed', user_feed_items_path(@user) %>
