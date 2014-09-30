@@ -13,7 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'spring', group: :development
 
+gem 'bower-rails'
 gem 'carrierwave'
 gem 'feedjira'
 gem 'fog'
 gem 'foundation-rails'
+gem 'pusher'
