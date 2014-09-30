@@ -16,3 +16,4 @@ gem 'spring', group: :development
 gem 'carrierwave'
 gem 'feedjira'
 gem 'fog'
+gem 'foundation-rails'
