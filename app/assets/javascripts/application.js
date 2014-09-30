@@ -11,8 +11,23 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require foundation
+//= require pusher
 //= require_tree .
 
+var pusher = new Pusher('95cfbff7872e752c374e');
+pusher.connection.bind('state_change', function(change) {
+  $('#connection_state').text(change.current);
+});
+
+var channel = pusher.subscribe('buddha_channel');
+channel.bind('buddha_event', function(data) {
+  $("#no-message").remove();
+  $("section#message").append('<div>' + data + '</div>')
+});
+
+Pusher.log = function(msg) {
+  if (console && console.log) {
+    console.log(msg);
+  }
+};
 $(function(){ $(document).foundation(); });
