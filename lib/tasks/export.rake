@@ -12,6 +12,7 @@ namespace :bada do
       puts "Processing feed at endpoint: #{user.feed}"
       1.upto(args[:pages].to_i) do |page|
         puts "Processing page #{page}"
+        metadata_for_feed
         feed = Feedjira::Feed.fetch_and_parse(user.feed << "?page=#{page}")
         sleep 2
         if feed && feed.entries.any?
@@ -21,7 +22,10 @@ namespace :bada do
               title: entry.title,
               link: entry.url,
               description: entry.summary,
-              published: entry.published
+              published: entry.published,
+              file: entry.enclosure_url,
+              keywords: entry.media_keywords,
+              geo: entry.geo
             )
           end
         else
@@ -33,5 +37,21 @@ namespace :bada do
     else
       puts "No user found"
     end
+  end
+end
+
+def metadata_for_feed
+  elements = {
+    'georss:point' => :geo,
+    'itunes:keywords' => :itunes_keywords,
+    'itunes:author' => :itunes_author,
+    'itunes:explicit' => :itunes_explcit,
+    'itunes:keywords' => :itunes_keywords,
+    'dc:creator' => :dc_creator,
+    'media:keywords' => :media_keywords,
+    'media:rights' => :media_rights
+  }
+  elements.each do |key, value|
+    Feedjira::Feed.add_common_feed_entry_element(key, :as => value)
   end
 end
