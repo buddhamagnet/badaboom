@@ -10,6 +10,7 @@ namespace :bada do
 
     if user
       puts "Processing feed at endpoint: #{user.feed}"
+      Pusher.trigger('bada_channel', 'bada_event', {message: "EXPORT IN PROGRESS..."})
       1.upto(args[:pages].to_i) do |page|
         puts "Processing page #{page}"
         metadata_for_feed
@@ -18,7 +19,8 @@ namespace :bada do
         if feed && feed.entries.any?
           feed.entries.each do |entry|
             puts "Processing boo: #{entry.title}"
-            create_entry(user, entry)
+            feed_item = create_entry(user, entry)
+            Pusher.trigger('bada_channel', 'count_event', {uid: user.uid, count: user.feed_items.count})
           end
         else
           puts "No more entries found"
