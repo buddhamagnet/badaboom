@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930121934) do
+ActiveRecord::Schema.define(version: 20141001081304) do
 
   create_table "feed_items", force: true do |t|
     t.integer  "user_id"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20140930121934) do
     t.text     "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "dc_creator"
+    t.string   "itunes_author"
+    t.string   "itunes_duration"
+    t.boolean  "itunes_explicit"
+    t.string   "itunes_keywords"
+    t.string   "media_rights"
   end
 
   add_index "feed_items", ["user_id"], name: "index_feed_items_on_user_id"
