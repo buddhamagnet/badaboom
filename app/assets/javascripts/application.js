@@ -19,16 +19,14 @@ pusher.connection.bind('state_change', function(change) {
   $('#connection_state').text(change.current);
 });
 
-var channel = pusher.subscribe('boo_channel');
-channel.bind('boo_event', function(data) {
-	$element = $('#feed_items_' + data['uid']);
-  $element.text(data['count']);
-});
-
 var channel = pusher.subscribe('bada_channel');
 channel.bind('bada_event', function(data) {
   $("h1#status").text(data['message']);
 });
+channel.bind('count_event', function(data) {
+  $('#feed_items_' + data['uid']).text(data['count']);
+});
+
 
 Pusher.log = function(msg) {
   if (console && console.log) {
