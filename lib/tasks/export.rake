@@ -14,7 +14,7 @@ namespace :bada do
         puts "Processing page #{page}"
         feed = Feedjira::Feed.fetch_and_parse(user.feed << "?page=#{page}")
         sleep 2
-        if feed
+        if feed && feed.entries.any?
           feed.entries.each do |entry|
             puts "Processing boo: #{entry.title}"
             user.feed_items.create!(
@@ -24,6 +24,9 @@ namespace :bada do
               published: entry.published
             )
           end
+        else
+          puts "No more entries found"
+          exit
         end
       end
       user.save
