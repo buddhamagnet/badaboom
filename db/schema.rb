@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001124902) do
+ActiveRecord::Schema.define(version: 20141002095834) do
 
   create_table "feed_items", force: true do |t|
     t.integer  "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141001124902) do
     t.string   "itunes_keywords"
     t.string   "media_rights"
     t.string   "remote_file"
+    t.string   "processed_filename"
   end
 
   add_index "feed_items", ["user_id"], name: "index_feed_items_on_user_id"
