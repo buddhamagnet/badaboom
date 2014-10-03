@@ -5,5 +5,9 @@ tool to get all my audio and metadata.
 
 TO USE:
 
-1. Create a new user with your Audioboo username and uid.
-2. Run rake bada:boom[uid] and the tool will parse the feed and save your emotions.
+1. In the rails console, create a new user with your Audioboo username and uid (no CRUD yet).
+2. Run rake bada:boom[uid,page] and the tool will parse the feed and save your emotions.
+
+BELLS AND WHISTLES
+
+For shits and giggles, the main app uses Pusher to update on export jobs on the front end.
