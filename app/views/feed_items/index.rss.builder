@@ -11,6 +11,7 @@ xml.rss :version => "2.0" do
         xml.description entry.description
         xml.pubDate entry.published.to_s(:rfc822)
         xml.enclosure(url: entry.file)
+        xml.downloaded_file entry.processed_filename
       end
     end
   end
