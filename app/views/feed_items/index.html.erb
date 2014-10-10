@@ -1,4 +1,16 @@
-<% @feed_items.each do |entry| %>
-  <p><%= link_to entry.title, entry.link %></p>
-<% end %>
-
+<table>
+  <thead>
+    <tr>
+      <th width="200">title</th>
+      <th width="200">published</th>
+    </tr>
+  </thead>
+  <tbody>
+  	 <% @feed_items.each do |feed_item| %>
+  	 <tr>
+  	 	<td><%= link_to feed_item.title, feed_item.link %></td>
+  	 	<td><%= feed_item.published.strftime %></td>
+  	 </tr>
+  	 <% end %>
+  </tbody>
+ </table>
